@@ -40,9 +40,9 @@ def build_layers(lyr, repeat):
 			repeat-=1
 	model.add(Dense(units=10, activation='softmax'))
 	return model
-file1=open("layers.txt","r")
-file2=open("repeats.txt","r")
-file3=open("accuracy.txt","w")
+file1=open("/root/workspace/layers.txt","r")
+file2=open("/root/workspace/repeats.txt","r")
+file3=open("/root/workspace/accuracy.txt","w")
 repeat=int(file2.read())
 lyr=int(file1.read())
 
@@ -52,7 +52,7 @@ model.compile(optimizer= Adam(learning_rate=0.0001), loss='categorical_crossentr
              )
 h = model.fit(X_train, y_train_cat, epochs=5,verbose=0)
 
-model.save("MyMNIST.h5")
+model.save("/root/workspace/MyMNIST.h5")
 score = model.evaluate(X_test,y_test_cat,verbose=0)
 accuracy = score[1]
 file3.write(str(accuracy))
